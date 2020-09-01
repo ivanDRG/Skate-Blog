@@ -3,7 +3,7 @@ let Article = require("../models/articles.model");
 
 router.route("/").get((req, res) => {
   Article.find()
-    .then((users) => res.json(users))
+    .then((articles) => res.json(articles))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
@@ -39,7 +39,7 @@ router.route("/update/:id").post((req, res) => {
       article.title = req.body.title;
       article.subtitle = req.body.subtitle;
       article.content = req.body.content;
-      article.imageURL = req.body.imageURL;
+      article.imageURL = req.body.image;
 
       article
         .save()
